@@ -1,26 +1,11 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { createStore, combineReducers } from 'redux';
-import { Provider, connect } from 'react-redux';
-
-const numbers = (state = [1, 2, 3, 4, 5], action)=> {
-  if(action.type === 'ADD_NUMBER'){
-    state = [...state, action.number];
-  }
-  return state;
-};
-
-const store = createStore(combineReducers({ numbers }));
+import { Provider } from 'react-redux';
+import { HashRouter } from 'react-router-dom';
+import store from './store';
+import App from './App';
 
 
-class App extends Component{
-  render(){
-    return (
-      <hr />
-    );
-  }
-}
-
-render(<Provider store={ store }><App /></Provider>, document.querySelector('#root'));
+render(<Provider store={ store }><HashRouter><App /></HashRouter></Provider>, document.querySelector('#root'));
 
 
